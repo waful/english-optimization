@@ -1,14 +1,26 @@
 var elements = document.getElementsByTagName('*');
 
 function toTitleCase(str){
-    return str.replace(new RegExp('\\w+', 'g'), function(thing){
-        return thing.charAt(0).toUpperCase() + thing.substr(1).toLowerCase();
-    });
+    if(str.length){
+        return str.replace(new RegExp('\\w+(\'t)?', 'g'), function(thing){
+            if(thing.length){
+                return thing.charAt(0).toUpperCase() + thing.substr(1).toLowerCase();
+            }
+            else{
+                return thing;
+            }
+        });
+    }
+    else{
+        return '';
+    }
 }
 
 var wordsToReplace = [
     ['am|is|are', 'be'],
-    ['was|were', 'been']
+    ['was|were', 'been'],
+    ['ain\'t|isn\'t|aren\'t', 'be not'],
+    ['wasn\'t|weren\'t', 'been not']
 ];
 
 for(var i = 0; i < elements.length; i++){
@@ -25,7 +37,8 @@ for(var i = 0; i < elements.length; i++){
                     var wordToReplace = wordsToReplace[k];
                     replacedText = replacedText
                         .replace(new RegExp('\\b(' + wordToReplace[0] + ')\\b', 'g'), wordToReplace[1])
-                        .replace(new RegExp('\\b(' + toTitleCase(wordToReplace[0]) + ')\\b', 'g'), toTitleCase(wordToReplace[1]));
+                        .replace(new RegExp('\\b(' + toTitleCase(wordToReplace[0]) + ')\\b', 'g'), toTitleCase(wordToReplace[1]))
+                        .replace(new RegExp('\\b(' + wordToReplace[0].toUpperCase() + ')\\b', 'g'), wordToReplace[1].toUpperCase());
                 }
                 if(replacedText !== text){
                     element.replaceChild(document.createTextNode(replacedText), node);
