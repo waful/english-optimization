@@ -1,19 +1,14 @@
 var elements = document.getElementsByTagName('*');
 
 function toTitleCase(str){
-    if(str.length){
-        return str.replace(new RegExp('\\w+(\'t)?', 'g'), function(thing){
-            if(thing.length){
-                return thing.charAt(0).toUpperCase() + thing.substr(1).toLowerCase();
-            }
-            else{
-                return thing;
-            }
-        });
-    }
-    else{
-        return '';
-    }
+    return str.replace(new RegExp('\\w+(\'t)?', 'g'), function(thing){
+        if(thing.length){
+            return thing.charAt(0).toUpperCase() + thing.substr(1).toLowerCase();
+        }
+        else{
+            return thing;
+        }
+    });
 }
 
 var wordsToReplace = [
