@@ -1,7 +1,7 @@
 var elements = document.getElementsByTagName('*');
 
 function toTitleCase(str){
-    return str.replace(new RegExp('\\w+(\'t)?', 'g'), function(thing){
+    return str.replace(new RegExp('[\\w’]+', 'g'), function(thing){
         if(thing.length){
             return thing.charAt(0).toUpperCase() + thing.substr(1).toLowerCase();
         }
@@ -27,7 +27,7 @@ for(var i = 0; i < elements.length; i++){
 
             if(node.nodeType === 3){
                 var text = node.nodeValue;
-                var replacedText = text;
+                var replacedText = text.replace('\'','’');
                 for(var k = 0; k < wordsToReplace.length; k++){
                     var wordToReplace = wordsToReplace[k];
                     replacedText = replacedText
@@ -35,6 +35,7 @@ for(var i = 0; i < elements.length; i++){
                         .replace(new RegExp('\\b(' + toTitleCase(wordToReplace[0]) + ')\\b', 'g'), toTitleCase(wordToReplace[1]))
                         .replace(new RegExp('\\b(' + wordToReplace[0].toUpperCase() + ')\\b', 'g'), wordToReplace[1].toUpperCase());
                 }
+                replacedText = replacedText.replace('’', '\'');
                 if(replacedText !== text){
                     element.replaceChild(document.createTextNode(replacedText), node);
                 }
