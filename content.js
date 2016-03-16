@@ -14,8 +14,8 @@ function toTitleCase(str){
 var wordsToReplace = [
     ['am|is|are', 'be'],
     ['was|were', 'been'],
-    ['ain\'t|isn\'t|aren\'t', 'be not'],
-    ['wasn\'t|weren\'t', 'been not']
+    ['ain’t|isn’t|aren’t', 'be not'],
+    ['wasn’t|weren’t', 'been not']
 ];
 
 for(var i = 0; i < elements.length; i++){
