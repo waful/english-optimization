@@ -15,7 +15,12 @@ var wordsToReplace = [
     ['am|is|are', 'be'],
     ['was|were', 'been'],
     ['ain’t|isn’t|aren’t', 'be not'],
-    ['wasn’t|weren’t', 'been not']
+    ['wasn’t|weren’t', 'been not'],
+    ['I’m', 'I be'],
+    ['he’s', 'he be'],
+    ['she’s', 'she be'],
+    ['it’s', 'it be'],
+    ['they’re', 'they be']
 ];
 
 for(var i = 0; i < elements.length; i++){
